@@ -5,7 +5,7 @@ import MovieListFooter from './MovieListFooter';
 import { useSelector } from 'react-redux';
 
 const MovieList = (props) => {
-  const movies =useSelector(store=>store.movies)
+  const movies =useSelector(state=>state.moviesState.movies)
  // const movies = [];
 
   return (
