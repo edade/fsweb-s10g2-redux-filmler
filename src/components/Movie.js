@@ -1,12 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { deleteMovie } from '../actions/movieActions';
 
 const Movie = (props) => {
+  const dispatch =useDispatch();
   const { id } = useParams();
   const { push } = useHistory();
 
-  const movies = [];
+  //const movies = [];
+  const movies =useSelector(store=>store.movies)
   const movie = movies.find(movie => movie.id === Number(id));
+  const deleteHandler = () => {
+    dispatch(deleteMovie(id))
+    push("/movies")
+  }
 
   return (
     <div className="bg-white rounded-md shadow flex-1">
@@ -36,7 +44,7 @@ const Movie = (props) => {
         </div>
       </div>
       <div className="px-5 py-3 border-t border-zinc-200 flex justify-end gap-2">
-        <button type="button" className="myButton bg-red-600 hover:bg-red-500">Sil</button>
+        <button onClick={deleteHandler} type="button" className="myButton bg-red-600 hover:bg-red-500">Sil</button>
         <button className="myButton bg-blue-600 hover:bg-blue-500 ">Favorilere ekle</button>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const AppHeader = (props) => {
-  const appTitle = "";
+  const appTitle = useSelector(state => state.appTitle)
   const displayFavorites = true;
 
   return (
