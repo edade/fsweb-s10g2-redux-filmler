@@ -4,5 +4,5 @@ export const deleteMovie = (id) => {
   return ({ type: DELETE_MOVIE, payload: Number(id) });
 }
 export const addMovie = (movie) => {
-  return { type: ADD_MOVIE, payload: movie };
+  return { type: ADD_MOVIE, payload: {...movie, id:Date.now()}  };
 };
